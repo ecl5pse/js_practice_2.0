@@ -1,27 +1,36 @@
 'use strict';
 
 class PrintMachine {
-    constructor(sizeFont,colorFont,familyFont) {
+
+    /**
+     *
+     * @param {number} sizeFont
+     * @param {string} colorFont
+     * @param {string} familyFont
+     * @param {string} text
+     */
+
+    constructor (sizeFont, colorFont, familyFont, text) {
         this.sizeFont = sizeFont;
         this.colorFont = colorFont;
         this.familyFont = familyFont;
+        this.text = text;
 
-    };
+    }
 
+    print () {
 
-
-    print (){
-
-
-        const textContentElement = document.createElement("div")
-        textContentElement.classList.add("text");
-        textContentElement.innerText = "alalala";
+        const textContentElement = document.createElement('p');
+        textContentElement.innerText = this.text;
         textContentElement.style.color = this.colorFont;
-        textContentElement.style.fontSize = this.sizeFont;
+        textContentElement.style.fontSize = `${this.sizeFont}px`;
         textContentElement.style.fontFamily = this.familyFont;
-
+        document.body.append(textContentElement);
 
     }
 
 }
+
+const prMachine = new PrintMachine(20, 'red', 'monospace', 'Hello World');
+prMachine.print();
 
